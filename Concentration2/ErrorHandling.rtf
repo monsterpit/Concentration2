@@ -1,0 +1,140 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red108\green121\blue134;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000;
+\csgenericrgb\c42394\c47462\c52518;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+Error Handling\
+\
+Lot of time we have a error it will be something that kind of , could be excepted or anticipated.You know somethings over the network and there might be a network timeout that's kind of normal error. If you have that kind of error , you likely would have an argument to the function that goes and does that network call. Maybe its even a closure that calls you back and said I found this somewhat expected error.But sometimes you have error that you dont except or that are kind rare and really disrupt the usage of a method or whatever. \
+
+\f1\b And in that kind of error , instead of having to have one of your arguments be an error handler or returning an error or something like that\
+You can do something that's called throwing error .\
+In you might think of this as like raising exceptions or something like that . It's a little simpler more elegant when you design in Swift.\
+\pard\tx0\tx0\tx0\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\fi5\ri-7488\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx0\tx0\tx5\tqc\tx93\tx566\tx1061\tx1133\tx1659\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\fi1530\pardirnatural\partightenfactor0
+\cf0 A method that could a error that would disrupt what it's doing can decide that it throws errors.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 This methods have word "throws" at the end\
+So this function saves throws\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 If it gets an error , it throws this error . So when it throws a error at you , you need to catch it, So you catch this error and look at it and decide what to do\
+\
+So how do you catch an error that has thrown?\
+You do that by doing\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f2\b \cf2 \cb3 \
+func
+\f3\b0 \cf4  save() 
+\f2\b \cf2 throws\
+
+\f3\b0 \cf4 \
+
+\f4\i \cf5 //You must put calls to functions like this in a do \{\} block and use the word try to call them.
+\f3\i0 \cf4 \
+
+\f2\b \cf2 do
+\f3\b0 \cf4  \{\
+    
+\f2\b \cf2 try
+\f3\b0 \cf4  context.save()\
+\}
+\f2\b \cf2 catch
+\f3\b0 \cf4  
+\f2\b \cf2 let
+\f3\b0 \cf4  error\{\
+    
+\f4\i \cf5 //error will be something that implements the Error protocol e.g. NSError
+\f3\i0 \cf4 \
+    
+\f4\i \cf5 // usually these are enums that have associated values to get error details
+\f3\i0 \cf4 \
+    
+\f2\b \cf2 throw
+\f3\b0 \cf4  error 
+\f4\i \cf5 // this would re-throw the error (only ok if the method we are in throws)
+\f3\i0 \cf4 \
+\}\
+\
+
+\f1\b \cf0 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl480\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+// 
+\f0\b0 \ul you put do catch construct around the method that would throw an Error and you put "try" in front of the call\
+// So you will try that method but it might throw\
+//So putting that in do catch thing you gonna catch that error\
+// So methods that throws has be called by try. (
+\f1\b \ulnone This lets Swift this can throw and I am trying it,But it doesnt necessarily have to be kept caught)
+\f0\b0 \ul \
+
+\f1\b \ulnone \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 //But if you do wanna catch . you can do it do catch block . That error thing, its just a local variable.\
+//Thats the things that gets thrown at you, And its going to be something that implements the protocol error.,but actually there's nothing in that protocol.It just identifies ,its just typing this thing as error.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl480\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 In iOS when things errors gets thrown at you there almost always going to be NSErrors\
+//  NSError is just a class that implements the Error protocol which is to say that, that nothing in particular\
+//But NSError has a lot of nice 
+\f2 \cf2 \cb3 methods and vars like error code ,even a localized description of error 
+\f1 \cf0 \cb1 that you could present to user\
+\
+\
+\
+\
+\
+\
+If you are certain a call will not throw , you can force try with try!...\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f4\i\b0 \cf5 \cb3 //If you are certain a call will not throw,you can force try with try! ... 
+\f3\i0 \cf4 \
+
+\f2\b \cf2 try
+\f3\b0 \cf4 ! context.save() 
+\f4\i \cf5 // will crash your program if save() actually throws an error\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\i0\b \cf0 \cb1 \
+\
+try!.. is extremely rare to use . as you have to be 100% sure that thing wont throw any error\
+\
+\
+\
+\
+\
+\
+Better one is if dont care about error is try?(Or you can conditionally try ,turning the return into an optional (which will be nil if  fail) )\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f2 \cf2 \cb3 let
+\f3\b0 \cf4  x = 
+\f2\b \cf2 try
+\f3\b0 \cf4 ? errorProneFunctionThatReturnsAnInt() 
+\f4\i \cf5 // x will be Int?\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\i0\b \cf0 \cb1 \
+Please Try this and if it throws dont crash but just ignore that the fact it threw an error(kinda like try ignore)\
+try? makes the return type optional of the methods\
+\
+\
+\
+\
+\
+}

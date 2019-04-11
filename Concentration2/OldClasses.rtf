@@ -1,0 +1,112 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;\f2\fswiss\fcharset0 Helvetica-Bold;
+\f3\froman\fcharset0 Times-Roman;\f4\fnil\fcharset0 Menlo-Bold;\f5\fnil\fcharset0 Menlo-Regular;
+\f6\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red252\green95\blue163;\red31\green31\blue36;
+\red255\green255\blue255;\red122\green200\blue182;\red150\green134\blue245;\red145\green212\blue98;\red108\green121\blue134;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;
+\csgenericrgb\c100000\c100000\c100000;\csgenericrgb\c47716\c78607\c71403;\csgenericrgb\c58752\c52717\c95948;\csgenericrgb\c56799\c83212\c38450;\csgenericrgb\c42394\c47462\c52518;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{check\}}{\leveltext\leveltemplateid1\'01\uc0\u10003 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{check\}}{\leveltext\leveltemplateid101\'01\uc0\u10003 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{check\}}{\leveltext\leveltemplateid201\'01\uc0\u10003 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{check\}}{\leveltext\leveltemplateid301\'01\uc0\u10003 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0
+\f0\fs24 \cf0 {\listtext	
+\f1 \uc0\u10003 
+\f0 	}NSObject\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+
+\f2\b Base class for all Objective-C classes\
+Some Advanced features will requires you to subclass from NSObject(and it cant hurt to do so)
+\f0\b0 \
+\
+NSObject is root class for all the classes  \
+All things like UIViewContoller, UIKit classes that where developed in objc  there root class from they inherit from is eventually NSObject\
+\
+Swift no requirement to subclass from NSObject,but there are few tiny 
+\f3 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 esoteric 
+\f0 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 API that would ask you to pass a class in that has to implement NSObject.\
+But swift class dont inherit from NSObject,But in Objective pretty much very class has to inherit from NSObject \
+Because some of the runtime was built into NSObject class rather than being in the actual runtime like it is in swift\
+\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	
+\f1 \uc0\u10003 
+\f0 	}NSNumber\
+\pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 When you pass number around you can actually pass them with this class, its a class so its a reference type.\
+You didn't have double and int as classes.You had C like doubles and ints in Objective C ,but you didnt have that,\
+So if you want to pass something in an object oriented way ,you had to pass this NSNumber.\
+Now it can represent any kind of number, floating point,number ,integer , anything. \
+It's a kind of a generic number holder , even a boolean it can hold in there\
+All the API that takes an NSNumber and there's a lot of it ,automatically bridged to the Swift types.\
+SO if you have Objective C based API somewhere in iOS that takes a number as an argument you can pass a double in there. or an int or whatever it excepting.\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f4\b \cf3 \cb4 let
+\f5\b0 \cf5  n = \cf6 \cb4 NSNumber\cf5 \cb4 (\cf7 \cb4 35.5\cf5 \cb4 )\
+
+\f4\b \cf3 let
+\f5\b0 \cf5  n1 : \cf6 \cb4 NSNumber\cf5 \cb4  = \cf7 \cb4 35.5\cf5 \cb4 \
+\
+
+\f4\b \cf3 let
+\f5\b0 \cf5  intified : \cf6 \cb4 Int\cf5 \cb4  = \cf8 \cb4 n\cf5 \cb4 .\cf6 \cb4 intValue\cf5 \cb4  
+\f6\i \cf9 //also doubleValue,boolValue,etc.\
+\
+
+\f0\i0 \cf0 \cb1 \
+\pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 NSNumber can be stored in let,var\
+intValue, doubleValue, boolValue return Int, Double, Bool value of swift \
+\
+\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	
+\f1 \uc0\u10003 
+\f0 	}Date\
+\pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+
+\f2\b Value type used to find out the date and time right now or to store past or future dates\
+See also Calendar, DateFormatter , DateComponents\
+If you are displaying a date in your UI ,  there are localization ramifications , so check these out!\
+\
+Date is used to represent date and time internally its represented like number of seconds since 1970 or something like that\
+Its also great for doing that , its great for even small amounts of time because the date includes the time down to small you know , sub milliseconds times\
+With Date there's other classes that go along with it like Calendar,DateFormatter,DateComponents,\
+DateComponents will give you things like the month and things like that.\
+\
+Why are there all those other classes ? Well because date, if you are donna put it in your UI, you have to be very careful. Around the world, dates are represented very differently and its not just that the name of a month is different a different language\
+Its that other locale we call them around the world, use completely different kinds of dating systems. Maybe even a completely different calender than we use. So really have to be careful if you are gonna put date in your UI to understand all of these other classes 
+\f0\b0 \
+\
+Its fine to use to track how long your app is running and all.\
+\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls4\ilvl0\cf0 {\listtext	
+\f1 \uc0\u10003 
+\f0 	}Data\
+\pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+
+\f2\b A value type "bag of bits" . Used to save/restore/transmit raw data throughout iOS SDK.\
+We use it to transfer data around a lot inside iOS API.\
+for e.g. if we got an image from the Internet, from some URL , it would come in as a big bag of bits . And we have classes like UI image.That can look in that bag of bits oh that's jpeg data and make an image out of it. Or look into a bag of bits  you know we have formatters that look and say that's json data.\
+\pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ul \ulc0 Data Struct is just a bag of bits and there's lot of methods to convert it to and from other kinds of things.
+\f2\b \ulnone \
+\
+\pard\tx560\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+}
